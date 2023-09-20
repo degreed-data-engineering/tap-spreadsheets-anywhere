@@ -8,9 +8,6 @@ LOGGER = logging.getLogger(__name__)
 
 def generator_wrapper(root_iterator):
     json_obj = json.load(root_iterator)
-
-    # to_return["content"] = json_obj
-
     for key in json_obj.keys():
         if key is None:
             key = "_smart_extra"
