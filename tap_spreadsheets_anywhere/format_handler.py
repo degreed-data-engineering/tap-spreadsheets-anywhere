@@ -218,7 +218,15 @@ def get_row_iterator(table_spec, uri):
                 table_spec, reader
             )
         elif format == "json-of-jsons":
-            print("hello world")
+            reader = get_streamreader(
+                uri,
+                universal_newlines=universal_newlines,
+                open_mode="r",
+                encoding=encoding,
+            )
+            iterator = tap_spreadsheets_anywhere.json_of_jsons_handler.get_row_iterator(
+                table_spec, reader
+            )
     except (ValueError, TypeError) as err:
         raise InvalidFormatError(uri, message=err)
 
