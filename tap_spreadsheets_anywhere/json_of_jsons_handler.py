@@ -10,8 +10,8 @@ def generator_wrapper(root_iterator):
     for obj in root_iterator:
         json_obj = json.loads(obj)
         to_return = {}
-        logging.info("########## json_obj type:" + str(type(json_obj)))
-        logging.info("########## json_obj sample:" + str(json_obj))
+        LOGGER.info("########## json_obj type:" + str(type(json_obj)))
+        LOGGER.info("########## json_obj sample:" + str(json_obj))
         for key, value in json_obj.items():
             if key is None:
                 key = "_smart_extra"
