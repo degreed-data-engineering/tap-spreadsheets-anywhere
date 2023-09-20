@@ -9,7 +9,7 @@ LOGGER = logging.getLogger(__name__)
 def generator_wrapper(root_iterator):
     LOGGER.info("########## root_iterator" + str(root_iterator))
     LOGGER.info("########## loading root_iterator as JSON")
-    json_obj = json.loads(root_iterator)
+    json_obj = json.load(root_iterator)
     LOGGER.info("########## root_iterator loaded as JSON in json_obj")
     LOGGER.info("########## printing json_obj: " + str(json_obj))
     to_return = {}
