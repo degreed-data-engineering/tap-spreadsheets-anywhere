@@ -10,17 +10,19 @@ def generator_wrapper(root_iterator):
     json_obj = json.load(root_iterator)
     to_return = {}
 
-    for key in json_obj.keys():
-        if key is None:
-            key = "_smart_extra"
-        value = json_obj[key]
+    to_return["content"] = json_obj
 
-        formatted_key = key
-        # remove non-word, non-whitespace characters
-        formatted_key = re.sub(r"[^\w\s]", "", formatted_key)
-        # replace whitespace with underscores
-        formatted_key = re.sub(r"\s+", "_", formatted_key)
-        to_return[formatted_key.lower()] = value
+    # for key in json_obj.keys():
+    #     if key is None:
+    #         key = "_smart_extra"
+    #     value = json_obj[key]
+
+    #     formatted_key = key
+    #     # remove non-word, non-whitespace characters
+    #     formatted_key = re.sub(r"[^\w\s]", "", formatted_key)
+    #     # replace whitespace with underscores
+    #     formatted_key = re.sub(r"\s+", "_", formatted_key)
+    #     to_return[formatted_key.lower()] = value
     yield to_return
 
 
