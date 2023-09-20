@@ -7,7 +7,9 @@ LOGGER = logging.getLogger(__name__)
 
 
 def generator_wrapper(root_iterator):
+    LOGGER.info("########## start iteration")
     for obj in root_iterator:
+        LOGGER.info("########## obj:" + str(obj))
         json_obj = json.loads(obj)
         to_return = {}
         LOGGER.info("########## json_obj type:" + str(type(json_obj)))
