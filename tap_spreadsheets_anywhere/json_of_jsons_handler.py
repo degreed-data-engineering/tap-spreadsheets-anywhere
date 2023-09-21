@@ -7,19 +7,19 @@ LOGGER = logging.getLogger(__name__)
 
 
 def generator_wrapper(root_iterator):
-    for obj in root_iterator:
-        json_obj = json.loads(obj)
+    json_obj = json.load(root_iterator)
+    for key in json_obj.keys():
+        if key is None:
+            key = "_smart_extra"
         to_return = {}
-        for key, value in json_obj.items():
-            if key is None:
-                key = "_smart_extra"
 
-            formatted_key = key
-            # remove non-word, non-whitespace characters
-            formatted_key = re.sub(r"[^\w\s]", "", formatted_key)
-            # replace whitespace with underscores
-            formatted_key = re.sub(r"\s+", "_", formatted_key)
-            to_return[formatted_key.lower()] = value
+        formatted_key = key
+        # remove non-word, non-whitespace characters
+        formatted_key = re.sub(r"[^\w\s]", "", formatted_key)
+        # replace whitespace with underscores
+        formatted_key = re.sub(r"\s+", "_", formatted_key)
+        to_return["KEY"] = key
+        to_return["VALUE"] = json_obj[key]
         yield to_return
 
 
